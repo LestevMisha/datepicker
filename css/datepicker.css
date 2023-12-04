@@ -7,6 +7,7 @@
 :root {
     --tui-input-color-label: #0000007a;
     --tui-input-color-background: #244a7f0f;
+    --tui-input-color-border: #244a7f21;
     --tui-input-large-border-radius: 12px;
 }
 
@@ -57,11 +58,35 @@ a {
     box-sizing: border-box;
 }
 
-.mt40 {
+.center {
+    text-align: center !important;
+}
+
+.mtext {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.mt1 {
+    margin-top: 1em !important;
+}
+
+.mt25 {
     position: relative;
     width: 25em;
     margin-top: 2em;
 }
+
+.mt50 {
+    position: relative;
+    width: 50em;
+    margin-top: 2em;
+}
+
+.c999 {
+    color: #999;
+    font-size: 12px;
+  }
 
 .c-datepicker-picker {
     -webkit-box-sizing: border-box;
@@ -93,10 +118,10 @@ a {
     color: #333;
 }
 
-.c-datepicker-picker.only-time {
+.c-datepicker-picker {
     top: 100% !important;
     left: 0 !important;
-    width: 100%;
+    width: 100% !important;
 }
 
 .c-datepicker-picker.only-time .c-datepicker-time-panel {
@@ -525,12 +550,14 @@ a {
 }
 
 .c-datepicker-picker__footer {
-    border-top: 1px solid #e4e4e4;
-    padding: 4px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
     text-align: right;
     background-color: #fff;
     position: relative;
-    font-size: 0;
+    margin: 1em !important;
 }
 
 .c-datepicker-button+.c-datepicker-button {
@@ -636,6 +663,7 @@ a {
 
 .c-datepicker-picker [slot=sidebar],
 .c-datepicker-picker__sidebar {
+    border-radius: var(--tui-input-large-border-radius) 0 0 var(--tui-input-large-border-radius);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -724,17 +752,19 @@ a {
     border-bottom: 1px solid #e4e4e4;
     font-size: 12px;
     padding: 8px 5px 5px;
-    display: table;
+    display: flex;
     width: 100%;
     box-sizing: border-box;
 }
 
 .c-datepicker-date-range-picker__time-content {
-    box-sizing: border-box;
-    display: table-cell;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
 }
 
 .c-datepicker-date-range-picker__editor-wrap {
+    width: 100%;
     position: relative;
     display: table-cell;
     padding: 0 5px;
@@ -763,6 +793,7 @@ a {
 }
 
 .c-datepicker-data-input {
+    text-indent: 1em;
     background-color: #00000000;
     outline: none;
     border: none;
@@ -784,7 +815,6 @@ a {
 .c-datepicker-date-editor {
     position: relative;
     border: none;
-    outline: none;
     width: 100%;
     height: 3em;
     margin: 0;
@@ -794,12 +824,24 @@ a {
     justify-content: center;
     background-color: var(--tui-input-color-background);
     border-radius: var(--tui-input-large-border-radius);
+    outline: 0.05em solid #00000000 !important;
+    -webkit-transition: outline-color .25s ease-out, background-color .25s ease-out;
+    -moz-transition: outline-color .25s ease-out, background-color .25s ease-out;
+    -o-transition: outline-color .25s ease-out, background-color .25s ease-out;
+    transition: outline-color .25s ease-out, background-color .25s ease-out;
 }
+
+.c-datepicker-date-editor:focus-within {
+    background-color: #FFFFFF;
+    outline: 0.05em solid #0000008f !important;
+}
+
 
 .c-datepicker-range__icon {
     display: inline-block;
     text-align: center;
-    margin: 1em;
+    padding: 1em;
+    border-right: 0.05em solid var(--tui-input-color-border);
 }
 
 .is-en.c-datepicker-date-range-picker .is-right .c-datepicker-date-range-picker__header-year {

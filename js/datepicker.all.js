@@ -15,7 +15,7 @@
     shortcutOptions: [],
     // between:数字：30，string:month/year
     between: false,
-    language: 'zh-CN',
+    language: 'en',
     hide: function () { },
     show: function () { }
   };
@@ -217,7 +217,6 @@
       return type === 'min' ? timeFormat.replace(/HH/, '00').replace(/mm/, '00').replace(/ss/, '00') : timeFormat.replace(/HH/, '23').replace(/mm/, '59').replace(/ss/, '59');
     },
     getScrollBarWidth: function () {
-      console.log("here1", "getScrollBarWidth")
       var inner = document.createElement('p');
       inner.style.width = "100%";
       inner.style.height = "200px";
@@ -2169,7 +2168,9 @@
         renderTpl = renderTpl.replace(/{{footerButton}}/g, RENDERAPI.pickerFooterNowButton(nameOptions));
       }
       var $datePickerHtml = $(renderTpl.replace(/{{table}}/g, table).replace(/{{year}}/g, dataFormat.year).replace(/{{month}}/g, dataFormat.month).replace('{{sidebar}}', sidebar).replace('{{hasTime}}', hasTime).replace('{{hasSidebar}}', hasSidebar));
-      $('body').append($datePickerHtml);
+      console.log("2nd Type", this.datePickerObject.$target[0]);
+      $(this.datePickerObject.$target[0]).append($datePickerHtml);
+      // $('body').append($datePickerHtml);
       this.$container = $datePickerHtml;
       this.$container.data('picker', this);
       this.$container.addClass('is-' + this.language);
@@ -2477,7 +2478,9 @@
       }
       var nameOptions = $.fn.datePicker.dates[this.language];
       var $datePickerHtml = $(RENDERAPI.rangePickerMainTpl(nameOptions, hasTime, hasSidebar, dataFormat[1].year, dataFormat[1].month, sidebar, table));
-      $('body').append($datePickerHtml);
+      console.log("3--------------3");
+      $(this.datePickerObject.$target[0]).append($datePickerHtml);
+      // $('body').append($datePickerHtml);
       this.$container = $datePickerHtml;
       this.$container.data('picker', this);
       this.$container.addClass('is-' + this.language);
@@ -2722,10 +2725,8 @@
       var TPL = this.config.isRange ? RENDERAPI.rangePickerMainOnlyTimeTpl(nameOptions, hasTime) : RENDERAPI.datePickerMainOnlyTimeTpl(hasTime);
       // var TPL = this.config.isRange ? RANGEPICKERMAINONLYTIMETPL : DATEPICKERMAINOLNLYTIMETPL;
       var $datePickerHtml = $(TPL.replace(/{{table}}/g, ''));
-
-      console.log("here2", "append", $datePickerHtml[0])
+      console.log("1st Type");
       $(this.datePickerObject.$target[0]).append($datePickerHtml);
-
       this.$container = $datePickerHtml;
       this.$container.data('picker', this);
       this.$container.addClass('is-' + this.language);

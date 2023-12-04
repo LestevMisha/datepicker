@@ -10,14 +10,6 @@
       padding: 20px;
     }
 
-    .mt20 {
-      margin-top: 20px;
-    }
-
-    .mt10 {
-      margin-top: 10px;
-    }
-
     .hide {
       display: none;
     }
@@ -25,179 +17,187 @@
     body {
       height: 1000px;
     }
-
-    .c999 {
-      color: #999;
-      font-size: 12px;
-    }
   </style>
 </head>
 
 <body>
   <div class="p20">
 
-    <!-- Time picker (HH:mm:ss) -->
-    <div class="mt40" id="picker-only-time">
-      <div>Single selection of hours, minutes and seconds, <br />minimum value: 02:20:00 <span
+    <!-- -------------SECTION 1------------- -->
+    <!-- <1> Time picker (HH:mm:ss) -->
+    <div class="mt25">
+      <div class="mtext"><b>1st</b> Type - Only Time Pickers</div>
+      <div>1. Single selection of hours, minutes and seconds,<li>minimum value: 01:10:10</li><span
           class="c999">(HH:mm:ss)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-time mt10">
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-time mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
         <input type="text" autocomplete="off" name="" placeholder="Select period"
           class="c-datepicker-data-input only-time" value="">
       </div>
     </div>
+    <!-- <1/> -->
 
-
-    <div class="mt40">
-      <div>（❤️新增）时分秒范围选择，最小值：04:23:11 ，最大值：20:59:59 <span class="c999">(HH:mm:ss 范围)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-time-range mt10">
+    <!-- <2> Time picker range (HH:mm:ss) -->
+    <div class="mt25">
+      <div>2. Hours, minutes and seconds range selection,<li>minimum value: 02:20:20</li>
+        <li>maximum value: 22:00:00</li><span class="c999">(HH:mm:ss range)</span>
+      </div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-time-range mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始时间" name="" class="c-datepicker-data-input only-time" value="">
+        <input placeholder="Start time" name="" class="c-datepicker-data-input only-time center" value="">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束时间" name="" class="c-datepicker-data-input only-time" value="">
+        <input placeholder="End Time" name="" class="c-datepicker-data-input only-time center" value="">
+      </div>
+      <div style="width: 100%; border-bottom: 0.1em solid; margin: 1em 0;"></div>
+    </div>
+    <!-- <2/> -->
+    <!-- -------------SECTION 1------------- -->
+
+
+    <!-- -------------SECTION 2------------- -->
+    <!-- <3> Date & time picker (YYYY-MM-DD HH:mm:ss) -->
+    <div class="mt25">
+      <div class="mtext"><b>2nd</b> Type - Date & Time Pickers</div>
+      <div>1. Single selection of year, month, day, hour, minute and second,<li>minimum value: 2020-01-01 03:30:30</li>
+        <li>maximum value: 2030-01-01 06:59:59</li><span class="c999">(YYYY-MM-DD HH:mm:ss single)</span>
+      </div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-en mt1">
+        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
+        <input type="text" autocomplete="off" name="" placeholder="Select date & period"
+          class=" c-datepicker-data-input">
       </div>
     </div>
-    <div class="mt40">
-      <div>（❤️新增）英文版。年月日时分秒单个选择，最小值：2018-01-01 04:00:00 ，最大值：2019-04-29 20:59:59 <span class="c999">(YYYY-MM-DD HH:mm:ss
-          单个)</span>
-      </div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-en mt10">
+    <!-- <3/> -->
+
+    <!-- <4> Date picker (YYYY-MM-DD) -->
+    <div class="mt25">
+      <div>2. Single selection of year, month and day,<li>no maximum or minimum values</li><span
+          class="c999">(YYYY-MM-DD single)</span></div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-day mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="choose date" class=" c-datepicker-data-input">
+        <input type="text" autocomplete="off" name="" placeholder="Select date"
+          class=" c-datepicker-data-input only-date" value="">
       </div>
     </div>
-    <div class="mt40">
-      <div>年月日单个选择，无最大最小值 <span class="c999">(YYYY-MM-DD 单个)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-day mt10">
+    <!-- <4/> -->
+
+    <!-- <5> Date & time picker (YYYY-MM-DD HH:mm) -->
+    <div class="mt25">
+      <div>3. Single selection of year, month, day, hour and minute<br /><span class="c999">(YYYY-MM-DD HH:mm
+          single)</span></div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepickerTime-single mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="选择日期" class=" c-datepicker-data-input only-date"
+        <input type="text" autocomplete="off" name="" placeholder="Select date & period"
+          class=" c-datepicker-data-input" value="">
+      </div>
+    </div>
+    <!-- <5/> -->
+
+    <!-- <6> Year & month picker (YYYY-MM) -->
+    <div class="mt25">
+      <div>4. Single selection of year and month,<li>maximum value: 2020-01</li>
+        <li>minimum value: 2028-01</li><span class="c999">(YYYY-MM single)</span>
+      </div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-yearMonthPicker-single mt1">
+        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
+        <input type="text" autocomplete="off" name="" placeholder="Select month" class=" c-datepicker-data-input"
           value="">
       </div>
     </div>
-    <div class="mt40">
-      <div>年月日范围选择，无最大最小值 <span class="c999">(YYYY-MM-DD 范围)</span></div>
-      <div class="c-datepicker-date-editor  J-datepicker-range-day mt10">
+    <!-- <6/> -->
+
+    <!-- <7> Year picker (YYYY) -->
+    <div class="mt25">
+      <div>5. Single selection of year,<li>maximum value: 2026</li>
+        <li>minimum value: 2018</li><span class="c999">(YYYY single)</span>
+      </div>
+      <div class="c-datepicker-date-editor c-datepicker-single-editor J-yearPicker-single mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input only-date" value="">
+        <input type="text" autocomplete="off" name="" placeholder="Select year" class="c-datepicker-data-input"
+          value="">
+      </div>
+    </div>
+    <!-- <7/> -->
+
+    <div class="mt25">
+      <div style="width: 100%; border-bottom: 0.1em solid; margin: 1em 0;"></div>
+    </div>
+    <!-- -------------SECTION 2------------- -->
+
+
+    <!-- -------------SECTION 3------------- -->
+    <!-- <8> -->
+    <div class="mt50">
+      <div class="mtext"><b>3rd</b> Type - Date Scopes Pickers</div>
+      <div>1. Year, month and day range selection,<li>no maximum and minimum values</li><span class="c999">(YYYY-MM-DD
+          scope)</span></div>
+      <div class="c-datepicker-date-editor  J-datepicker-range-day mt1">
+        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
+        <input placeholder="Start date" name="" class="c-datepicker-data-input only-date center" value="">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input only-date" value="">
+        <input placeholder="End date" name="" class="c-datepicker-data-input only-date center" value="">
       </div>
     </div>
+    <!-- <8/> -->
 
-    <div class="mt40">
-      <div>年月日范围选择，无最大最小值 <span class="c999">(YYYY-MM-DD 范围)</span></div>
-      <div class="c-datepicker-date-editor J-datepicker-range-day mt10">
+    <!-- <9> -->
+    <div class="mt50">
+      <div>2. Year, month, day, hour, minute and second range selection,<li>minimum value: 2018-01-01 06:00:00</li>
+        <li>maximum value: 2030-01-01 20:59:59</li>
+      </div>
+      <li>Open the console and observe the closed hide type</li>
+      <span class="c999">(YYYY-MM-DD HH:mm:ss scope)</span>
+      <div class="c-datepicker-date-editor J-datepicker-range mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input only-date" value="">
+        <input placeholder="Start date" name="" class="c-datepicker-data-input center" value="2023-01-01 04:00:00">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input only-date" value="">
+        <input placeholder="End date" name="" class="c-datepicker-data-input center" value="2029-08-01 04:00:00">
       </div>
     </div>
+    <!-- <9/> -->
 
-    <div class="mt40">
-      <div>年月日时分秒单个选择，最小值：2018-01-01 04:00:00 ，最大值：2019-04-29 20:59:59 <span class="c999">(YYYY-MM-DD HH:mm:ss
-          单个)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker mt10">
+    <!-- <10> -->
+    <div class="mt50">
+      <div>3. Year, month, day, hour, minute and second range selection,<li>start and end limited to one natural month
+        </li><span class="c999">(YYYY-MM-DD HH:mm:ss range)</span></div>
+      <div class="c-datepicker-date-editor J-datepicker-range-betweenMonth mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="选择日期" class=" c-datepicker-data-input">
-      </div>
-    </div>
-    <div class="mt40">
-      <div>年月日时分秒范围选择，最小值：2018-01-01 06:00:00 ，最大值：2019-04-29 20:59:59 <span class="c999">(YYYY-MM-DD HH:mm:ss
-          范围)</span></div>
-      <div>打开控制台，观察关闭的hide类型</div>
-      <div class="c-datepicker-date-editor J-datepicker-range mt10">
-        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input" value="2018-01-01 04:00:00">
+        <input placeholder="Start date" name="" class="c-datepicker-data-input center" value="">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input" value="2018-03-01 04:00:00">
+        <input placeholder="End date" name="" class="c-datepicker-data-input center" value="">
       </div>
     </div>
+    <!-- <10/> -->
 
-    <div class="mt40">
-      <div>年月日时分秒范围选择，开始结束限制在一个自然月内 <span class="c999">(YYYY-MM-DD HH:mm:ss 范围)</span></div>
-      <div class="c-datepicker-date-editor J-datepicker-range-betweenMonth mt10">
+    <!-- <11> -->
+    <div class="mt50">
+      <div>4. Select the year, month, day, hour, minute and second range.<li>The start and end are limited to 30 days.
+        </li>
+        <span class="c999">(YYYY-MM-DD HH:mm:ss range)</span>
+      </div>
+      <div class="c-datepicker-date-editor J-datepicker-range-between30 mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input" value="">
+        <input placeholder="Start date" name="" class="c-datepicker-data-input center" value="">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input" value="">
+        <input placeholder="End date" name="" class="c-datepicker-data-input center" value="">
       </div>
     </div>
+    <!-- <11/> -->
 
-    <div class="mt40">
-      <div>年月日时分秒范围选择，开始结束限制在30天内 <span class="c999">(YYYY-MM-DD HH:mm:ss 范围)</span></div>
-      <div class="c-datepicker-date-editor J-datepicker-range-between30 mt10">
+    <!-- <12> -->
+    <div class="mt50">
+      <div>5. Year, month, day and ten range selection<br /><span class="c999">(YYYY-MM-DD HH:mm range)</span></div>
+      <div class="c-datepicker-date-editor J-datepickerTime-range mt1">
         <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input" value="">
+        <input placeholder="Start date" name="" class="c-datepicker-data-input center" value="">
         <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input" value="">
+        <input placeholder="End date" name="" class="c-datepicker-data-input center" value="">
       </div>
     </div>
-
-    <div class="mt40">
-      <div>年月日十分单个选择 <span class="c999">(YYYY-MM-DD HH:mm 单个)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepickerTime-single mt10">
-        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="选择日期" class=" c-datepicker-data-input" value="">
-      </div>
-    </div>
-
-    <div class="mt40">
-      <div>年月日十分范围选择 <span class="c999">(YYYY-MM-DD HH:mm 范围)</span></div>
-      <div class="c-datepicker-date-editor J-datepickerTime-range mt10">
-        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input placeholder="开始日期" name="" class="c-datepicker-data-input" value="">
-        <span class="c-datepicker-range-separator">-</span>
-        <input placeholder="结束日期" name="" class="c-datepicker-data-input" value="">
-      </div>
-    </div>
-
-    <div class="mt40">
-      <div>年月单个选择，最大值：2018-01，最小值：2019-04 <span class="c999">(YYYY-MM 单个)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-yearMonthPicker-single mt10">
-        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="选择年月" class=" c-datepicker-data-input" value="">
-      </div>
-    </div>
-
-    <div class="mt40">
-      <div>年单个选择，最大值：2020，最小值：2018 <span class="c999">(YYYY 单个)</span></div>
-      <div class="c-datepicker-date-editor c-datepicker-single-editor J-yearPicker-single mt10">
-        <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-        <input type="text" autocomplete="off" name="" placeholder="选择年份" class=" c-datepicker-data-input" value="">
-      </div>
-    </div>
-    <div class="c-datepicker-box mt40" style="height:300px;overflow: auto; background: #dfeeff;padding: 20px;">
-      父元素滚动，日期选择框跟随input滚动例子<br>
-      父元素div.c-datepicker-box，样式：height:300px;overflow: auto; <br><br>
-      占位 <br><br>
-      占位 <br><br>
-      <div class="mt40">
-        <div>年月日单个选择，测试父元素滚动用</div>
-        <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-day mt10">
-          <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-          <input type="text" autocomplete="off" name="" placeholder="选择日期" class=" c-datepicker-data-input only-date"
-            value="">
-        </div>
-      </div>
-      <div class="mt20">
-        <div>年月日单个选择，测试父元素滚动用</div>
-        <div class="c-datepicker-date-editor c-datepicker-single-editor J-datepicker-day mt10">
-          <i class="c-datepicker-range__icon kxiconfont icon-clock"></i>
-          <input type="text" autocomplete="off" name="" placeholder="选择日期" class=" c-datepicker-data-input only-date"
-            value="">
-        </div>
-      </div>
-      占位 <br><br>
-      占位 <br><br>
-      占位 <br><br>
-      占位 <br><br>
-      占位 <br><br>
-      占位 <br><br>
-    </div>
-
-
+    <!-- <12/> -->
+    <!-- -------------SECTION 3------------- -->
   </div>
+
   <!-- <i class="c-datepicker-input__icon c-datepicker-range__close-icon"></i> -->
   <script src="js/plugins/jquery.js"></script>
   <script src="js/plugins/moment.min.js"></script>
@@ -217,44 +217,88 @@
   <script type="text/javascript">
 
     $(function () {
-      // Select hours, minutes and seconds
+      // -------------SECTION 1-------------
+      // <1> Select hours, minutes and seconds
       $('.J-datepicker-time').datePicker({
         format: 'HH:mm:ss',
-        language: 'en',
-        min: '02:20:00',
-        parentName: "#picker-only-time",
+        min: '01:10:10',
       });
+      // <1/>
 
-
+      // <2> Hours, minutes and seconds range selection
       $('.J-datepicker-time-range').datePicker({
         format: 'HH:mm:ss',
         isRange: true,
-        min: '04:23:11',
-        max: '20:59:59'
+        min: '02:20:20',
+        max: '22:00:00'
       });
-      //时分秒年月日单个
+      // <2/>
+      // -------------SECTION 1-------------
+
+
+      // -------------SECTION 2-------------
+      // <3> Hours, minutes, seconds, year, month, day, single
       $('.J-datepicker-en').datePicker({
         hasShortcut: true,
-        min: '2018-01-01 04:00:00',
-        max: '2019-04-29 20:59:59',
-        language: 'en',
+        min: '2020-01-01 03:30:30',
+        max: '2030-01-01 06:59:59',
         shortcutOptions: [{
           name: 'today',
           day: '0'
         }, {
-          name: 'yesterday',
-          day: '-1',
+          name: 'tommorow',
+          day: '+1',
           time: '00:00:00'
         }, {
-          name: 'last week',
-          day: '-7'
+          name: 'next week',
+          day: '+7'
         }],
         hide: function () {
           console.info(this)
         }
       });
+      // <3/>
+
+      // <4> year month day single
+      $('.J-datepicker-day').datePicker({
+        hasShortcut: true,
+        format: 'YYYY-MM-DD',
+        shortcutOptions: [{
+          name: 'today',
+          day: '0'
+        }]
+      });
+      // <4/>
+
+      // <5> Years, months, days, single
+      $('.J-datepickerTime-single').datePicker({
+        format: 'YYYY-MM-DD HH:mm'
+      });
+      // <5/>
+
+      // <6> Single year and month
+      $('.J-yearMonthPicker-single').datePicker({
+        format: 'YYYY-MM',
+        min: '2020-01',
+        max: '2028-01',
+        hide: function (type) {
+          console.info(this.$input.eq(0).val());
+        }
+      });
+      // <6/>
+
+      // <7> Year
+      $('.J-yearPicker-single').datePicker({
+        format: 'YYYY',
+        min: '2018',
+        max: '2026'
+      });
+      // <7/>
+      // -------------SECTION 2-------------
+
+
       var DATAPICKERAPI = {
-        // 默认input显示当前月,自己获取后填充
+        // The default input displays the current month, fill it in after getting it
         activeMonthRange: function () {
           return {
             begin: moment().set({ 'date': 1, 'hour': 0, 'minute': 0, 'second': 0 }).format('YYYY-MM-DD HH:mm:ss'),
@@ -262,7 +306,7 @@
           }
         },
         shortcutMonth: function () {
-          // 当月
+          // current month
           var nowDay = moment().get('date');
           var prevMonthFirstDay = moment().subtract(1, 'months').set({ 'date': 1 });
           var prevMonthDay = moment().diff(prevMonthFirstDay, 'days');
@@ -271,7 +315,7 @@
             prev: '-' + prevMonthDay + ',-' + nowDay
           }
         },
-        // 近n小时计算返回
+        // Calculate and return in the past n hours
         shortcutPrevHours: function (hour) {
           var nowDay = moment().get('date');
           var prevHours = moment().subtract(hour, 'hours');
@@ -281,24 +325,20 @@
           return {
             day: prevDate + ',0',
             time: prevTime + ',' + nowTime,
-            name: '近' + hour + '小时'
+            name: 'last ' + hour + ' hours'
           }
         },
-        // 注意为函数：快捷选项option:只能同一个月份内的
+        // Note that it is a function: shortcut option: can only be within the same month
         rangeMonthShortcutOption1: function () {
           var result = DATAPICKERAPI.shortcutMonth();
           // 近18小时
           var resultTime = DATAPICKERAPI.shortcutPrevHours(18);
           return [{
-            name: '昨天',
+            name: 'yesterday',
             day: '-1,-1',
             time: '00:00:00,23:59:59'
           }, {
-            name: '这一月',
-            day: result.now,
-            time: '00:00:00,'
-          }, {
-            name: '上一月',
+            name: 'last month',
             day: result.prev,
             time: '00:00:00,23:59:59'
           }, {
@@ -307,145 +347,94 @@
             time: resultTime.time
           }];
         },
-        // 快捷选项option
+        //Quick option
         rangeShortcutOption1: [{
-          name: '最近一周',
+          name: 'last week',
           day: '-7,0'
         }, {
-          name: '最近一个月',
+          name: 'last month',
           day: '-30,0'
         }, {
-          name: '最近三个月',
+          name: 'last 3 months',
           day: '-90, 0'
         }],
         singleShortcutOptions1: [{
-          name: '今天',
+          name: 'today',
           day: '0',
           time: '00:00:00'
         }, {
-          name: '昨天',
+          name: 'yesterday',
           day: '-1',
           time: '00:00:00'
         }, {
-          name: '一周前',
+          name: 'last week',
           day: '-7'
         }]
       };
-      //时分秒年月日单个
-      $('.J-datepicker').datePicker({
-        hasShortcut: true,
-        min: '2018-01-01 04:00:00',
-        max: '2019-04-29 20:59:59',
-        shortcutOptions: [{
-          name: '今天',
-          day: '0'
-        }, {
-          name: '昨天',
-          day: '-1',
-          time: '00:00:00'
-        }, {
-          name: '一周前',
-          day: '-7'
-        }],
-        hide: function () {
-          console.info(this)
-        }
-      });
 
-      //年月日单个
-      $('.J-datepicker-day').datePicker({
-        hasShortcut: true,
-        format: 'YYYY-MM-DD',
-        shortcutOptions: [{
-          name: '今天',
-          day: '0'
-        }, {
-          name: '昨天',
-          day: '-1'
-        }, {
-          name: '一周前',
-          day: '-7'
-        }]
-      });
-
-      //年月日范围
+      // -------------SECTION 3-------------
+      // <8> Year month day range
       $('.J-datepicker-range-day').datePicker({
         hasShortcut: true,
         format: 'YYYY-MM-DD',
         isRange: true,
         shortcutOptions: DATAPICKERAPI.rangeShortcutOption1
       });
+      // <8/>
 
-      //十分年月日单个
-      $('.J-datepickerTime-single').datePicker({
-        format: 'YYYY-MM-DD HH:mm'
-      });
-
-      //十分年月日范围
-      $('.J-datepickerTime-range').datePicker({
-        format: 'YYYY-MM-DD HH:mm',
-        isRange: true
-      });
-
-      //时分秒年月日范围，包含最大最小值
+      // <9> Hours, minutes, seconds, year, month, and day range, including maximum and minimum values
       $('.J-datepicker-range').datePicker({
         hasShortcut: true,
         min: '2018-01-01 06:00:00',
-        max: '2019-04-29 20:59:59',
+        max: '2030-01-01 20:59:59',
         isRange: true,
         shortcutOptions: [{
-          name: '昨天',
+          name: 'yesterday',
           day: '-1,-1',
           time: '00:00:00,23:59:59'
         }, {
-          name: '最近一周',
+          name: 'last week',
           day: '-7,0',
           time: '00:00:00,'
         }, {
-          name: '最近一个月',
+          name: 'last month',
           day: '-30,0',
           time: '00:00:00,'
         }, {
-          name: '最近三个月',
+          name: 'last 3 months',
           day: '-90, 0',
           time: '00:00:00,'
         }],
         hide: function (type) {
           console.info(this.$input.eq(0).val(), this.$input.eq(1).val());
-          console.info('类型：', type)
+          console.info('type: ', type)
         }
       });
-      //时分秒年月日范围，限制只能选择同一月，比如2018-10-01到2018-10-30
+      // <9/>
+
+      // <10> Hours, minutes, seconds, year, month, and day range. Only the same month can be selected, such as 2018-10-01 to 2018-10-30.
       $('.J-datepicker-range-betweenMonth').datePicker({
         isRange: true,
         between: 'month',
         hasShortcut: true,
         shortcutOptions: DATAPICKERAPI.rangeMonthShortcutOption1()
       });
+      // <10/>
 
-      //时分秒年月日范围，限制开始结束相隔天数小于30天
+      // <11> Hours, minutes, seconds, years, months and days, the number of days between the start and end of the restriction is less than 30 days
       $('.J-datepicker-range-between30').datePicker({
         isRange: true,
         between: 30
       });
+      // <11/>
 
-      //年月单个
-      $('.J-yearMonthPicker-single').datePicker({
-        format: 'YYYY-MM',
-        min: '2018-01',
-        max: '2019-04',
-        hide: function (type) {
-          console.info(this.$input.eq(0).val());
-        }
+      // <12> Year, month and day range
+      $('.J-datepickerTime-range').datePicker({
+        format: 'YYYY-MM-DD HH:mm',
+        isRange: true
       });
-
-      //选择年
-      $('.J-yearPicker-single').datePicker({
-        format: 'YYYY',
-        min: '2018',
-        max: '2020'
-      });
-
+      // <12/>
+      // -------------SECTION 3-------------
 
     });
   </script>

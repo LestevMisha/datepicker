@@ -1,28 +1,25 @@
 # Datepicker.js 
 
-> Complete functions, to meet the simple configuration to complete complex needs. More types, more choices.
+> Complete functions, to meet the simple configuration to complete complex needs.
 
 ![datepicker.js](./images/datepicker-banner.png "datepicker.js")
 
 **Datepicker.js**:
 
-- 支持时分秒年月日范围选择
-- 最大最小值限制
-- 限制开始结束时间间隔最大值
-- 快捷选项简易配置
-- 支持只选年月，只选年
+- Supports hour, minute, second, year, month and day range selection
+- Maximum and minimum value limits
+- Limit the maximum start and end time interval
+- Quick options for easy configuration
+- Supports selecting only year and month, only selecting year
 
-ui仿vue element-ui datapicker组件，实现jquery版本。一直没找到满意的开源jquery时间插件，所以自己写一个用在项目上，并开源出来，希望对你有帮助
-
-
- [Demo](https://qiuyaofan.github.io/datepicker/) 
+ [Demo](https://lestevmisha.github.io/datepicker/) 
 
 
 ## Browser Install
 
 
 ```
-// picker css（加载了fonts,具体看scss文件夹）
+// picker css (fonts loaded, see scss folder for details)
 <link rel="stylesheet" href="css/datepicker.css">
 
 // rely on plugins
