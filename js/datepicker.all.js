@@ -4,7 +4,7 @@
  */
 ; (function ($) {
   /*==============BEGIN API============*/
-
+  var isT = false
   var defaultOptions = {
     min: false,
     max: false,
@@ -359,16 +359,16 @@
       return html;
     },
     pickerFooterTpl: function (nameOptions, className, text) {
-      var clearHtml='';
-      if (className ==='c-datepicker-picker__btn-now'){
+      var clearHtml = '';
+      if (className === 'c-datepicker-picker__btn-now') {
         clearHtml = '<button type="button" class="c-datepicker-button c-datepicker-picker__link-btn c-datepicker-button--text c-datepicker-button--mini c-datepicker-picker__btn-clear">' +
           '<span>' +
           nameOptions.clear +
           '</span>' +
-        '</button>' 
+          '</button>'
       }
       var html = '<div class="c-datepicker-picker__footer" style="">' +
-        clearHtml+
+        clearHtml +
         '<button type="button" class="c-datepicker-button c-datepicker-picker__link-btn c-datepicker-button--text c-datepicker-button--mini ' + className + '">' +
         '<span>' +
         text +
@@ -675,7 +675,7 @@
       return html;
     }
   });
-/*==============END YEAR============*/
+  /*==============END YEAR============*/
 
   /*==============BEGIN MONTH============*/
   // 月
@@ -788,7 +788,7 @@
     }
   });
 
-/*==============END MONTH============*/
+  /*==============END MONTH============*/
 
   /*==============BEGIN DAY============*/
   // 日期
@@ -877,6 +877,23 @@
         }
       })
 
+      /* optim */
+      function exclude_dates_bfr(arr, selected_date) {
+        for (const row of arr) {
+          const dateCells = Array.from(row.children);
+
+          for (const diff_date of dateCells) {
+            const diffDateValue = parseInt(diff_date.textContent);
+
+            if (parseInt(selected_date) > diffDateValue) {
+              diff_date.style.pointerEvents = "none";
+              diff_date.classList.add("prev-month");
+            }
+          }
+        }
+      }
+      /* optim */
+
       function clickDateRange(_this, $target) {
         // var _this = API.getPicker($(this), 'day');
         var $wrap = _this.picker.$container.find('.c-datepicker-date-range-picker-panel__wrap');
@@ -897,6 +914,29 @@
           _this.current = 0;
         }
         if (!_this.current) {
+
+          /* optim */
+          const { textContent: selected_date } = $target[0];
+          const dates = Array.from($target[0].parentElement.parentElement.children).slice(1);
+          const right_col = $target[0].closest(".is-right");
+          const body_cols = $target[0].closest(".c-datepicker-picker__body-content");
+          var tbl = body_cols.querySelector(".is-right table");
+          $(tbl).css("pointer-events", "visible");
+          const btn = $target[0].closest(".c-datepicker-picker").querySelector(".c-datepicker-picker__btn-clear");
+          btn.disabled = true;
+          if (right_col) {
+            const left_col = body_cols.querySelector(".is-left");
+            var arrows_block = left_col.querySelector(".c-datepicker-date-range-picker__header")
+            arrows_block.style.pointerEvents = "none";
+            var left_col_table = Array.from(left_col.querySelector("tbody").children).slice(1);
+            exclude_dates_bfr(left_col_table, 100000);
+          } else {
+            const arrows_block = $target[0].closest(".c-datepicker-date-range-picker-panel__wrap").querySelector(".c-datepicker-date-range-picker__header")
+            arrows_block.style.pointerEvents = "none";
+          }
+          exclude_dates_bfr(dates, selected_date);
+          /* optim */
+
           $target.addClass('current');
           var inputVal = moment().set({ 'year': year, 'month': month, 'date': date }).format(_this.picker.config.format.split(' ')[0]);
           $day.val(inputVal);
@@ -905,6 +945,11 @@
           _this.current = 1;
         } else if (_this.current == 1) {
           // 选完两个
+
+          /* optim */
+          isT = false;
+          /* optim */
+
           $target.addClass('current');
           var existDate = $day.eq(0).val();
           var inputVal = moment().set({ 'year': year, 'month': month, 'date': date }).format(_this.picker.config.format.split(' ')[0]);
@@ -962,7 +1007,7 @@
           start = end;
           end = temp;
         }
-        _this.addRangeClass(moment(API.newDateFixed(_this.picker, start)), moment(API.newDateFixed(_this.picker, end)), true);
+        _this.addRangeClass(moment(API.newDateFixed(_this.picker, start)), moment(API.newDateFixed(_this.picker, end)), true, date);
       })
     },
     show: function () {
@@ -1233,7 +1278,22 @@
       return html;
     },
     // 添加时间范围类名
-    addRangeClass: function (defaultStart, defaultEnd, isHover) {
+    addRangeClass: function (defaultStart, defaultEnd, isHover, num) {
+      
+
+      if (num === undefined) {
+        var btn_ = this.picker.$container.find('.c-datepicker-picker__btn-clear')
+        const arrows_block = this.picker.$container.find(".is-left .c-datepicker-date-range-picker__header")
+        const right_col = this.picker.$container.find('.is-right table');
+        if (!isT) {
+          right_col.css('pointer-events', "none");
+        }
+        arrows_block.css('pointer-events', "visible");
+        btn_.prop('disabled', false);
+      } else {
+        isT = true;
+      }
+
       var $wrap = this.picker.$container.find('.c-datepicker-date-range-picker-panel__wrap');
       $wrap.find('td.available').removeClass('in-range start-date end-date');
       var $days = this.picker.$container.find('.c-datePicker__input-day');
@@ -1267,23 +1327,31 @@
       if (isAfter || isBefore) {
         return;
       }
-      // 开始值在范围内
+
+      /* optim */
+      //Start value is within range
       if (isStartBetween) {
         index = (startMoment.month() + 1) == startMonth ? 0 : 1;
-        $wrap.eq(index).find('td.available').eq(startMoment.date() - 1).addClass('current start-date');
+        $wrap.eq(index).find('td.available').eq(startMoment.date()).addClass('current start-date');
       }
-      // 结束值在范围内
+      //The end value is within the range
       if (isEndBetween) {
         index = (endMoment.month() + 1) == startMonth ? 0 : 1;
-        $wrap.eq(index).find('td.available').eq(endMoment.date() - 1).addClass('current end-date');
+        if (num === undefined) {
+          $wrap.eq(index).find('td.available').eq(endMoment.date()).addClass('current end-date');
+        } else {
+          $wrap.eq(index).find('td.available').eq(num - 1).addClass('current end-date');
+        }
       }
+      /* optim */
 
       var $current = $wrap.find('td.current');
       var $start = $wrap.find('.start-date');
       var $end = $wrap.find('.end-date');
       $current.addClass('in-range');
-      // 选中的都在
-      // 同一个
+
+      // The selected ones are all there
+      // the same one
       if ($start.is($end)) {
         $start.addClass('in-range');
         return;
@@ -1540,7 +1608,7 @@
     }
   });
 
-/*==============END TIME============*/
+  /*==============END TIME============*/
 
   /*==============BEGIN ONLY-TIME============= */
   // 时分秒
@@ -2168,7 +2236,7 @@
         renderTpl = renderTpl.replace(/{{footerButton}}/g, RENDERAPI.pickerFooterNowButton(nameOptions));
       }
       var $datePickerHtml = $(renderTpl.replace(/{{table}}/g, table).replace(/{{year}}/g, dataFormat.year).replace(/{{month}}/g, dataFormat.month).replace('{{sidebar}}', sidebar).replace('{{hasTime}}', hasTime).replace('{{hasSidebar}}', hasSidebar));
-      console.log("2nd Type", this.datePickerObject.$target[0]);
+      // console.log("2nd Type", this.datePickerObject.$target[0]);
       $(this.datePickerObject.$target[0]).append($datePickerHtml);
       // $('body').append($datePickerHtml);
       this.$container = $datePickerHtml;
@@ -2478,7 +2546,7 @@
       }
       var nameOptions = $.fn.datePicker.dates[this.language];
       var $datePickerHtml = $(RENDERAPI.rangePickerMainTpl(nameOptions, hasTime, hasSidebar, dataFormat[1].year, dataFormat[1].month, sidebar, table));
-      console.log("3--------------3");
+      // console.log("3rd Type");
       $(this.datePickerObject.$target[0]).append($datePickerHtml);
       // $('body').append($datePickerHtml);
       this.$container = $datePickerHtml;
@@ -2725,7 +2793,7 @@
       var TPL = this.config.isRange ? RENDERAPI.rangePickerMainOnlyTimeTpl(nameOptions, hasTime) : RENDERAPI.datePickerMainOnlyTimeTpl(hasTime);
       // var TPL = this.config.isRange ? RANGEPICKERMAINONLYTIMETPL : DATEPICKERMAINOLNLYTIMETPL;
       var $datePickerHtml = $(TPL.replace(/{{table}}/g, ''));
-      console.log("1st Type");
+      // console.log("1st Type");
       $(this.datePickerObject.$target[0]).append($datePickerHtml);
       this.$container = $datePickerHtml;
       this.$container.data('picker', this);
